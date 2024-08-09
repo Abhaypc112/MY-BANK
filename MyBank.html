@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BANK</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .main{
+            margin: 20px;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 1px 0px 10px 0px gray;
+        }
+        header>div{
+            padding: 15px;
+            width: 100%;
+            background-color: rgb(153, 153, 221);
+            box-shadow: 1px 0px 10px 0px gray;
+            color: white;
+        }
+        section{
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        button{
+            width: 215px;
+            height: 40px;
+            background-color:rgb(152, 210, 75) ;
+            border: none;
+            border-radius: 5px;
+            color:white;
+            font-size: large;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            border-style: none;
+            padding-left: 10px;
+            box-shadow: 1px 0px 10px 0px rgb(222, 216, 216);
+            font-size: large;
+        }
+        button:hover{
+            box-shadow: 1px 0px 5px 0px rgb(206, 202, 202);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+            <div><h1>My Bank</h1></div>
+    </header>
+    
+    <section>
+        <div class="main" style="background-color: rgb(248, 179, 50);">
+            <h1>Deposit</h1>
+            <label for="deposit"></label><br>
+            <input type="number" id="deposit" name="deposit" placeholder="Enter Amount"><br><br>
+            <button type="submit" onclick="deposit()">Deposit</button>
+        </div>
+         <div class="main" style="background-color: rgb(233, 89, 118);">
+            <h1>Withdraw</h1>
+            <label for="withdrow"></label><br>
+            <input type="number" id="withdraw" name="withdraw"placeholder="Enter Amount"><br><br>
+            <button type="submit" onclick="withdraw()">Withdraw</button>
+         </div>
+        <div class="main" style="background-color: rgb(153, 153, 221);">
+            <h1>Balance</h1>
+            <button onclick="balance()" type="button">Check Balance</button>
+            <h3 id="balance"></h3>
+        </div>
+    
+    </section>
+
+         <!-- -------------Script------------ -->
+
+
+    <script>
+        let totalBankBalance = 0;
+
+        function balance(){
+            document.getElementById("balance").innerHTML = "$ "+totalBankBalance;
+        }
+        function deposit(){
+            let depositAmount=document.getElementById("deposit").value;
+            totalBankBalance += Number(depositAmount);
+            alert("$ "+depositAmount+" Succesfully Deposited")
+        }
+        function withdraw(){
+            let withdrawAmount=document.getElementById("withdraw").value;
+            if(totalBankBalance>=withdrawAmount){
+                totalBankBalance -= Number(withdrawAmount);
+                alert("$ "+withdrawAmount+" Succesfully Withdrawed")
+            }else{
+                alert("Insufficeint Balance")
+            }
+            
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>
